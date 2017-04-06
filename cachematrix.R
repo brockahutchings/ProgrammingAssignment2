@@ -11,7 +11,12 @@ makeCacheMatrix <- function(x = matrix()) {
   c <- NULL
   
   ##setter ftn() for the matrix
-  set <- function(){
+  set <- function(y){
+    ##set imput matrix y to var x in parent environment
+    x <<- y
+    
+    ##ensure c in parent environment is still NULL
+    c <<- NULL
     
   }
   
