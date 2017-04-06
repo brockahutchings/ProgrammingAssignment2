@@ -22,12 +22,12 @@ makeCacheMatrix <- function(x = matrix()) {
   
   #getter ftn() for the matrix 
   get <- function(){
-    
+    x
   }
   
   ##set the cache c to the inverse of the matrix
-  set_inverse <- function(){
-    
+  set_inverse <- function(inverse){
+    c <<- inverse
   }
   
   ##get the cache c
