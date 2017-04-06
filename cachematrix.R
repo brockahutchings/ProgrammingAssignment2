@@ -1,4 +1,9 @@
-## The folloeing two ftns are used to retrieve the inverse of a matrix 
+##for testing only##
+##testing matrix
+testing_matrix <-matrix(c(2, 4, 3, 1, 5, 7), nrow=3, ncol=2)
+##########################
+
+## The following two ftns are used to retrieve the inverse of a matrix 
 ##and store it in a cach so theat the next time a user tries to query 
 ##it they will get the saved value
 
@@ -8,15 +13,15 @@
 makeCacheMatrix <- function(x = matrix()) {
   
   ##define hte cache to be used
-  c <- NULL
+  inversed_matrix <- NULL
   
   ##setter ftn() for the matrix
   set <- function(y){
     ##set imput matrix y to var x in parent environment
     x <<- y
     
-    ##ensure c in parent environment is still NULL
-    c <<- NULL
+    ##ensure inversed_matrix in parent environment is still NULL
+    inversed_matrix <<- NULL
     
   }
   
@@ -25,19 +30,45 @@ makeCacheMatrix <- function(x = matrix()) {
     x
   }
   
-  ##set the cache c to the inverse of the matrix
+  ##set the cache inversed_matrix to the inverse of the matrix
   set_inverse <- function(inverse){
-    c <<- inverse
+    inversed_matrix <<- inverse
   }
   
-  ##get the cache c
+  ##get the cached inversed_matrix
   get_inverse <- function(){
-    
+    inversed_matrix
   }
+  
+  ##list the above ftns()
+  list(set = set, get = get,
+       setinverse = setinverse,
+       getinverse = getinverse)
 }
 
 ##inverts the matrix returned by makeCacheMatrix
 ##or if matrix has already been inverted retrieve it from cache
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+  ## Return a matrix that is the inverse of 'x'
+  
+  ##set inversed_matrix as the result of getinverse()
+  inversed_matrix <- x$getinverse()
+  
+  ##if inversed_matrix not null get return inversed_matrix
+  if(!is.null(inversed_matrix)) {
+    message("getting cached data")
+    return(inversed_matrix)
+  }
+  
+  ##call get and saves to var data
+  data <- x$get()
+  
+  ##get the inverse of data
+  inversed_matrix <- solve(data, ...)
+  
+  ##set cached data to inverse
+  x$setinverse(inversed_matrix)
+  
+  ##self explandatory
+  inversed_matrix
 }
