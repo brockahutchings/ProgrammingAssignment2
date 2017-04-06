@@ -26,12 +26,12 @@ makeCacheMatrix <- function(x = matrix()) {
   }
   
   ##set the cache inversed_matrix to the inverse of the matrix
-  set_inverse <- function(inverse){
+  setinverse <- function(inverse){
     inversed_matrix <<- inverse
   }
   
   ##get the cached inversed_matrix
-  get_inverse <- function(){
+  getinverse <- function(){
     inversed_matrix
   }
   
