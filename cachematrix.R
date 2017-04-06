@@ -1,8 +1,3 @@
-##for testing only##
-##testing matrix
-testing_matrix <-matrix(c(2, 4, 3, 1, 5, 7), nrow=3, ncol=2)
-##########################
-
 ## The following two ftns are used to retrieve the inverse of a matrix 
 ##and store it in a cach so theat the next time a user tries to query 
 ##it they will get the saved value
